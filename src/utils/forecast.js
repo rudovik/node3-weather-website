@@ -12,7 +12,9 @@ const forecast = (latitude, longitude, callback) => {
      const temp = body.currently.temperature;
      const precipProbab = parseInt(body.currently.precipProbability*100);
      const summary = body.daily.data[0].summary;
-     callback(undefined, summary + " It is currently " + temp + " degrees out. There is a " + precipProbab + "%" + " chance of rain.");
+     const maxTemp = body.daily.data[0].temperatureHigh;
+     const minTemp = body.daily.data[0].temperatureLow;
+     callback(undefined, summary + " Зараз " + temp + "\u2103. Ймовірність опадів: " + precipProbab + "%. Температурний максимум сьогодні: " + maxTemp + "\u2103 . Мінімальне значення: " + minTemp + "\u2103.");
     }
   });
 };
